@@ -1,4 +1,123 @@
 
-<html>
 <!DOCTYPE html>
 <html lang="en">
+     <title>MMUFindIT</title>
+    <style>
+body {
+    background-color: #c4bebe;
+    font-family: 'Times New Roman', Times, serif;
+    margin: 0;
+    padding: 20px;
+    background-image: url("MMUFIT.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    background-attachment: fixed;
+    text-align: center;
+}
+.box-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    max-width: 480px;
+    margin: 40px 20px 40px auto;
+}
+
+.name-box {
+    background: transparent;
+    border: 1px solid #999;
+    border-radius: 12px;
+    padding: 16px;
+    min-height: 150px;
+}
+
+.name-box h1 {
+    margin: 0 0 10px;
+    font-size: 18px;
+}
+
+.name-list {
+    column-count: 1;
+    column-gap: 14px;
+}
+
+.name-list div {
+    break-inside: avoid;
+    padding: 3px 0;
+}
+ h2 {
+   text-align: center;
+    text-shadow: 2px 2px 4px rgba(34, 13, 13, 0.5); font-size: 50px;
+    margin: 20px 20px 0 0;
+     color: #333; font-size: 30px;
+ }
+ h3 {
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
+    font-size: 15px;
+    margin: 0 20px 20px 0;
+    color: #370101;
+}
+    </style>
+
+        <meta charset="UTF-8">
+        <body>
+        <h2>MMU Lost And Found Areas</h2>
+        <h3>(Click on the word "Area #" to proceed)</h3>
+        <div class="box-grid">
+            <div class="name-box">
+                <h1>Area 1</h1>
+                <div class="name-list">
+                    <div>DTC</div>
+                    <div>FCI</div>
+                    <div>FOM</div>
+                </div>
+            </div>
+
+            <div class="name-box">
+                <h1>Area 2</h1>
+                <div class="name-list">
+                    <div>FCM</div>
+                    <div>FAIE</div>
+                    <div>STAD</div>
+                </div>
+            </div>
+
+            <div class="name-box">
+                <h1>Area 3</h1>
+                <div class="name-list">
+                    <div>CLC</div>
+                    <div>LIBRARY</div>
+                    <div>Social LP</div>
+                    <div>Development LP</div>
+                </div>
+            </div>
+
+            <div class="name-box">
+                <h1>Area 4</h1>
+                <div class="name-list">
+                    <div>Starbees</div>
+                    <div>Stadium</div>
+                    <div>Swimming Pool</div>
+                    <div>Indoor Sports Hall</div>
+                </div>
+            </div>
+
+            <div class="name-box">
+                <h1>Area 5</h1>
+                <div class="name-list">
+                    <div>Boys Dorm</div>
+                    <div>Volleyball court</div>
+                </div>
+            </div>
+
+            <div class="name-box">
+                <h1>Area 6</h1>
+                <div class="name-list">
+                    <div>Girls Dorm</div>
+                    <div>Tekun Mart</div>
+                    <div>Surau</div>
+                </div>
+            </div>
+        </div>
+</body>
