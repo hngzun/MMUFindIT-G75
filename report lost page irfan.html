@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MMU FindIT - Lost Report</title>
+  <style>
+   body {
+    background-color: #c4bebe;
+    font-family: 'Times New Roman', Times, serif;
+    margin: 0;
+    padding: 20px;
+    background-image: url("MMUFIT.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    background-attachment: fixed;
+    text-align: center;
+    }
+    header {
+      background: #0066cc;
+      color: #fff;
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 22px;
+    }
+    header .codes {
+      font-size: 14px;
+    }
+    .container {
+      width: 600px;
+      margin: 40px auto;
+      background: #fff;
+      padding: 25px;
+      border: 1px solid #ccc;
+    }
+    h2 {
+      margin-top: 0;
+      color: #333;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 15px;
+      background: #0066cc;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #004999;
+    }
+    footer {
+      text-align: center;
+      background-color: #004080;
+      color: white;
+      padding: 10px;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>MMU FindIT</h1>
+     <img src="c:\Users\irfan\MMUFindIT-G75\mmu_logo.png" alt="MMU Logo" style="height:60px; vertical-align:middle; margin-right:15px;">
+  <h1 style="display:inline-block; vertical-align:middle;"></h1>
+    
+  </header>
+
+  <div class="container">
+    <h2>Make a Report LOST</h2>
+    <form id="lostForm">
+      <label>Item Name</label>
+      <input type="text" name="itemName" required>
+
+      <label>Place Lost</label>
+      <input type="text" name="placeFound" required>
+
+      <label>Colour and Brand</label>
+      <input type="text" name="colourBrand">
+
+      <label>Date Lost</label>
+      <input type="date" name="dateLost" required>
+
+      <label>Description</label>
+      <textarea name="description" rows="4" placeholder="Describe the item..."></textarea>
+
+      <label>Upload Photo</label>
+      <input type="file" name="photo" accept="image/*">
+
+      <button type="submit">Submit Report</button>
+    </form>
+    <p id="msg"></p>
+  </div>
+
+  <footer>
+    <p>Contact us: Arief Shazwan (0196417464) | Marcus Hng Zun (0166652217)| Irfan Amri (0172492269) </p>
+    <p>&copy; 2026 MMU Cyberjaya MMUFindit</p>
+  
+  </footer>
+
+  <script>
+    document.getElementById("lostForm").addEventListener("submit", function(e){
+      e.preventDefault();
+      document.getElementById("msg").innerText = "Report submitted successfully!";
+      // Later: send data + photo to backend
+    });
+  </script>
+</body>
+</html>
