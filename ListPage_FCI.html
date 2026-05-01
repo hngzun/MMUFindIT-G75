@@ -59,6 +59,19 @@ footer {
     padding: 5px;
     margin-top: auto;
 }
+
+      .report-entry {
+        background: rgba(255,255,255,0.8);
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        padding: 10px;
+        margin-bottom: 10px;
+        text-align: left;
+      }
+      .report-date {
+        font-size: 0.9em;
+        color: #555;
+      }
     </style>
 </head>
 <body>
@@ -73,22 +86,62 @@ footer {
         <div class="box-grid">
             <div class="name-box">
                 <h1>Area 1</h1>
-                <div class="name-list">
-                    <div>DTC</div>
-                    <div>FCI</div>
-                    <div>FOM</div>
+                <div id="area1List" class="name-list">
+                    <div>No reports yet.</div>
                 </div>
             </div>
             <div class="name-box">
                 <h1>Area 2</h1>
-                <div class="name-list">
-                    <div>Another</div>
-                    <div>Place</div>
-                    <div>Here</div>
+                <div id="area2List" class="name-list">
+                    <div>No reports yet.</div>
                 </div>
             </div>
         </div>
     </div>
+    <script>
+      function formatReport(report) {
+        return `<div class="report-entry">
+                  <strong>${report.itemName}</strong> <span class="report-date">(${report.dateLost})</span><br>
+                  <em>${report.location}</em><br>
+                  <span>${report.itemDescription}</span>
+                </div>`;
+      }
+
+      async function renderReports() {
+        const area1 = document.getElementById('area1List');
+        const area2 = document.getElementById('area2List');
+
+        area1.innerHTML = '';
+        area2.innerHTML = '';
+
+        try {
+          const response = await fetch('get_reports.php');
+          if (!response.ok) {
+            throw new Error('Unable to load reports from the server.');
+          }
+
+          const reports = await response.json();
+          if (!Array.isArray(reports) || reports.length === 0) {
+            area1.innerHTML = '<div>No reports yet.</div>';
+            area2.innerHTML = '<div>No reports yet.</div>';
+            return;
+          }
+
+          reports.forEach(report => {
+            const text = `${report.location}`.toLowerCase();
+            const isArea1 = /fci|dtc|fom/.test(text);
+            const target = isArea1 ? area1 : area2;
+            target.insertAdjacentHTML('beforeend', formatReport(report));
+          });
+        } catch (error) {
+          const errorMessage = `<div class="error">Error loading reports: ${error.message}</div>`;
+          area1.innerHTML = errorMessage;
+          area2.innerHTML = errorMessage;
+        }
+      }
+
+      window.addEventListener('DOMContentLoaded', renderReports);
+    </script>
     
     <footer>
         <p>&copy; 2026 MMU Cyberjaya Lost & Found</p>
