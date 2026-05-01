@@ -23,23 +23,59 @@ body {
 header {
     background-color: #4a5057;
     color: white;
-    text-align: center;
-    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+}
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.header-box {
+    background-color: rgba(214, 59, 59, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    white-space: nowrap;
 }
 h4 {
     margin: 0;
     font-size: 19px;
-}   
+}
 .content {
     flex: 1;
     padding: 20px;
+}
+.buttons-row {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+.body-button {
+    background-color: rgba(74, 80, 87, 0.8);
+    border: 1px solid #999;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+}
+.body-button:hover {
+    background-color: rgba(74, 80, 87, 0.9);
 }
 .box-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 40px;
     max-width: 680px;
-    margin: 40px 20px 40px 200px; 
+    margin: 40px auto; 
 }
 .name-box {
     background: transparent;
@@ -76,43 +112,52 @@ footer {
 </head>
 <body>
     <header>
-    
-        <img src="mmu_logo.png" alt="MMU Logo" style="height:60px; vertical-align:middle; margin-right:15px;">
-       <h1 style="display:inline-block; vertical-align:middle;"></h1>
-        <h4>MMUFindit Lost & Found</h4>
-        
+        <div class="header-left">
+            <div class="header-box">FCI FOM DTC</div>
+            <img src="mmu_logo.png" alt="MMU Logo" style="height:60px; vertical-align:middle; margin-right:15px;">
+            <div>
+                <h1 style="display:inline-block; vertical-align:middle;"></h1>
+                <h4>MMUFindit Lost & Found</h4>
+            </div>
+        </div>
     </header>
     <div class="content">
+        <div class="buttons-row">
+            <a href="report loss page.html" class="body-button">Report Lost Item</a>
+            <a href="report found page.html" class="body-button">Report Found Item</a>
+        </div>
         <div class="box-grid">
             <div class="name-box">
-                <h1>Area 1</h1>
-                <div id="area1List" class="name-list">
+                <h1>Lost Items</h1>
+                <div id="LostList" class="name-list">
                     <div>No reports yet.</div>
                 </div>
             </div>
             <div class="name-box">
-                <h1>Area 2</h1>
-                <div id="area2List" class="name-list">
+                <h1>Found Items</h1>
+                <div id="FoundList" class="name-list">
                     <div>No reports yet.</div>
                 </div>
             </div>
         </div>
     </div>
     <script>
-      function formatReport(report) {
+      function formatReport(report, type) {
+        const dateField = type === 'found' ? report.dateFound : report.dateLost;
+        const dateLabel = type === 'found' ? 'Found on' : 'Lost on';
         return `<div class="report-entry">
-                  <strong>${report.itemName}</strong> <span class="report-date">(${report.dateLost})</span><br>
+                  <strong>${report.itemName}</strong> <span class="report-date">(${dateLabel}: ${dateField})</span><br>
                   <em>${report.location}</em><br>
                   <span>${report.itemDescription}</span>
                 </div>`;
       }
 
       async function renderReports() {
-        const area1 = document.getElementById('area1List');
-        const area2 = document.getElementById('area2List');
+        const lostList = document.getElementById('LostList');
+        const foundList = document.getElementById('FoundList');
 
-        area1.innerHTML = '';
-        area2.innerHTML = '';
+        lostList.innerHTML = '';
+        foundList.innerHTML = '';
 
         try {
           const response = await fetch('get_reports.php');
@@ -121,22 +166,31 @@ footer {
           }
 
           const reports = await response.json();
-          if (!Array.isArray(reports) || reports.length === 0) {
-            area1.innerHTML = '<div>No reports yet.</div>';
-            area2.innerHTML = '<div>No reports yet.</div>';
+          if (!reports || (!Array.isArray(reports.lost) && !Array.isArray(reports.found))) {
+            lostList.innerHTML = '<div>No reports yet.</div>';
+            foundList.innerHTML = '<div>No reports yet.</div>';
             return;
           }
 
-          reports.forEach(report => {
-            const text = `${report.location}`.toLowerCase();
-            const isArea1 = /fci|dtc|fom/.test(text);
-            const target = isArea1 ? area1 : area2;
-            target.insertAdjacentHTML('beforeend', formatReport(report));
-          });
+          if (Array.isArray(reports.lost) && reports.lost.length > 0) {
+            reports.lost.forEach(report => {
+              lostList.insertAdjacentHTML('beforeend', formatReport(report, 'lost'));
+            });
+          } else {
+            lostList.innerHTML = '<div>No lost reports yet.</div>';
+          }
+
+          if (Array.isArray(reports.found) && reports.found.length > 0) {
+            reports.found.forEach(report => {
+              foundList.insertAdjacentHTML('beforeend', formatReport(report, 'found'));
+            });
+          } else {
+            foundList.innerHTML = '<div>No found reports yet.</div>';
+          }
         } catch (error) {
           const errorMessage = `<div class="error">Error loading reports: ${error.message}</div>`;
-          area1.innerHTML = errorMessage;
-          area2.innerHTML = errorMessage;
+          lostList.innerHTML = errorMessage;
+          foundList.innerHTML = errorMessage;
         }
       }
 

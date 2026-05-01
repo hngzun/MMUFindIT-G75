@@ -1,11 +1,11 @@
 -- Create database
-CREATE DATABASE mmu_findit;
+CREATE DATABASE IF NOT EXISTS mmu_findit;
 
 -- Use the database
 USE mmu_findit;
 
 -- Create table for missing item reports
-CREATE TABLE missing_items (
+CREATE TABLE IF NOT EXISTS missing_items (
     id INT AUTO_INCREMENT PRIMARY KEY,
     itemName VARCHAR(100) NOT NULL,
     itemDescription TEXT NOT NULL,

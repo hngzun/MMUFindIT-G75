@@ -23,6 +23,7 @@ body {
     margin: 40px 20px 40px auto;
 }
 
+
 .name-box {
     background: transparent;
     border: 1px solid #999;
@@ -30,7 +31,6 @@ body {
     padding: 16px;
     min-height: 150px;
 }
-
 .name-box h1 {
     margin: 0 0 10px;
     font-size: 18px;
@@ -58,6 +58,18 @@ body {
     margin: 0 20px 20px 0;
     color: #370101;
 }
+.name-box h1 a {
+    color: #333;
+    text-decoration: none;
+}
+.name-box h1 a:hover {
+    text-decoration: underline;
+}
+.name-box.area-1 {
+    background-color: rgba(255, 0, 0, 0.3);
+}
+
+
     </style>
 
         <meta charset="UTF-8">
@@ -65,8 +77,9 @@ body {
         <h2>MMU Lost And Found Areas</h2>
         <h3>(Click on the word "Area #" to proceed)</h3>
         <div class="box-grid">
-            <div class="name-box">
-                <h1>Area 1</h1>
+            <div class="name-box area-1">
+                <h1><a href="ListPage_FCI.html">Area 1</a></h1>
+            
                 <div class="name-list">
                     <div>DTC</div>
                     <div>FCI</div>
