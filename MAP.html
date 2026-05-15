@@ -4,24 +4,50 @@
      <title>MMUFindIT</title>
     <style>
 body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
     background-color: #c4bebe;
     font-family: 'Times New Roman', Times, serif;
-    margin: 0;
-    padding: 20px;
     background-image: url("MMUFIT.png");
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
     background-attachment: fixed;
-    text-align: center;
+}
+.page-container {
+    display: flex;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+.left-panel {
+    flex: 0 0 40%;
+    min-width: 320px;
+    height: 80vh;
+    background-image: url("MapDraw.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+}
+.right-panel {
+    flex: 0 0 40%;
+    min-width: 320px;
+    padding: 40px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 .box-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
-    max-width: 480px;
-    margin: 40px 20px 40px auto;
+    width: 100%;
+    max-width: 560px;
+    margin: 20px auto 0;
 }
+
 
 .name-box {
     background: transparent;
@@ -30,7 +56,6 @@ body {
     padding: 16px;
     min-height: 150px;
 }
-
 .name-box h1 {
     margin: 0 0 10px;
     font-size: 18px;
@@ -54,19 +79,56 @@ body {
  h3 {
     text-align: center;
     text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
-    font-size: 15px;
-    margin: 0 20px 20px 0;
+    font-size: 18px;
+    margin: 0 0 30px;
     color: #370101;
+}
+h2 {
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(34, 13, 13, 0.5);
+    font-size: 42px;
+    margin: 0 0 20px;
+    color: #333;
+}
+.name-box h1 a {
+    color: #333;
+    text-decoration: none;
+}
+.name-box h1 a:hover {
+    text-decoration: underline;
+}
+.name-box.area-1 {
+    background-color: rgba(255, 0, 0, 0.3);
+}
+
+.name-box.area-2 {
+    background-color: rgba(0, 4, 255, 0.3);
+}
+.name-box.area-3 {
+    background-color: rgba(9, 255, 0, 0.3);
+}
+.name-box.area-4 {
+    background-color: rgba(255, 0, 217, 0.3);
+}
+.name-box.area-5 {
+    background-color: rgba(0, 213, 255, 0.3);
+}
+.name-box.area-6 {
+    background-color: rgba(255, 255, 0, 0.3);
 }
     </style>
 
         <meta charset="UTF-8">
         <body>
-        <h2>MMU Lost And Found Areas</h2>
-        <h3>(Click on the word "Area #" to proceed)</h3>
-        <div class="box-grid">
-            <div class="name-box">
-                <h1>Area 1</h1>
+            <div class="page-container">
+                <div class="left-panel"></div>
+                <div class="right-panel">
+                    <h2>MMU Lost And Found Areas</h2>
+                    <h3>(Click on the word "Area #" to proceed)</h3>
+                    <div class="box-grid">
+            <div class="name-box area-1">
+                <h1><a href="ListPage_FCI.html">Area 1</a></h1>
+            
                 <div class="name-list">
                     <div>DTC</div>
                     <div>FCI</div>
@@ -74,8 +136,8 @@ body {
                 </div>
             </div> 
 
-            <div class="name-box">
-                <h1>Area 2</h1>
+            <div class="name-box area-2">
+                <h1><a href="ListPage_FCM.html">Area 2</a></h1>
                 <div class="name-list">
                     <div>FCM</div>
                     <div>FAIE</div>
@@ -83,8 +145,8 @@ body {
                 </div>
             </div>
 
-            <div class="name-box">
-                <h1>Area 3</h1>
+            <div class="name-box area-3">
+                <h1><a href="ListPage_CLC.html">Area 3</a></h1>
                 <div class="name-list">
                     <div>CLC</div>
                     <div>LIBRARY</div>
@@ -93,8 +155,8 @@ body {
                 </div>
             </div>
 
-            <div class="name-box">
-                <h1>Area 4</h1>
+            <div class="name-box area-4">
+                <h1><a href="ListPage_STB.html">Area 4</a></h1>
                 <div class="name-list">
                     <div>Starbees</div>
                     <div>Stadium</div>
@@ -103,16 +165,16 @@ body {
                 </div>
             </div>
 
-            <div class="name-box">
-                <h1>Area 5</h1>
+            <div class="name-box area-5">
+                <h1><a href="ListPage_BD.html">Area 5</a></h1>
                 <div class="name-list">
                     <div>Boys Dorm</div>
                     <div>Volleyball court</div>
                 </div>
             </div>
 
-            <div class="name-box">
-                <h1>Area 6</h1>
+            <div class="name-box area-6">
+                <h1><a href="ListPage_GD.html">Area 6</a></h1>
                 <div class="name-list">
                     <div>Girls Dorm</div>
                     <div>Tekun Mart</div>
@@ -120,4 +182,7 @@ body {
                 </div>
             </div>
         </div>
+                </div>
+            </div>
 </body>
+</html>
