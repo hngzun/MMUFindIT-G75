@@ -18,7 +18,7 @@
     text-align: center;
 }
     header {
-      background-color: #004080;
+     background-color: #525868;
       color: white;
       text-align: center;
       padding: 20px;
@@ -33,7 +33,7 @@
     }
     h2 {
       text-align: center;
-      color: #004080;
+      color: #03519e;
     }
     form label {
       display: block;
@@ -62,10 +62,22 @@
     }
     footer {
       text-align: center;
-      background-color: #004080;
+       background-color: #525868;
       color: white;
       padding: 10px;
       margin-top: 30px;
+    }
+    .header-button {
+    background-color: rgba(37, 39, 42, 0.8);
+    border: 1px solid #999;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    white-space: nowrap;
+    transition: background-color 0.3s;
     }
   </style>
 </head>
@@ -73,13 +85,16 @@
 
     <header>
       <h1>MMUFindit Lost & Found</h1>
-      <img src="mmu_logo.png" alt="MMU Logo" style="height:60px; vertical-align:middle; margin-right:15px;">
-      <h1 style="display:inline-block; vertical-align:middle;"></h1>
-      <p>Report Your Missing Item</p>
-    </header>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="mmu_logo.png"MMU Logo style="height:60px; vertical-align:middle; margin-right:15px;">
+  <h1 style="display:inline-block; vertical-align:middle;"></h1>
+
+    <p>Report Your Missing Item</p>
+           <a href="MAP.html" class="header-button">Back to Map</a>
+  </header>
 
   <main>
-    <h2>Missing Item Form</h2>
+  <h2>Lost Item Found Form</h2>
   
     <form action="submit_missing_item.php" method="POST" enctype="multipart/form-data">
       <label for="itemName">Item Name</label>
@@ -102,7 +117,6 @@
 
       <button type="submit">Submit Report</button>
     </form>
-    <p style="margin-top:20px; text-align:center;"><a href="ListPage_FCI.html">View Reports</a> | <a href="report found page.html">Report Found Item</a></p>
   </main>
 
   <footer>

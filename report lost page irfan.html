@@ -15,17 +15,16 @@
     background-attachment: fixed;
     text-align: center;
     }
-    header {
-      background: #0066cc;
-      color: #fff;
-      padding: 15px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+     header {
+      background-color: #624c4c;
+      color: white;
+      text-align: center;
+      padding: 40px 20px 20px;
+      margin-top: 30px;
     }
     header h1 {
       margin: 0;
-      font-size: 22px;
+      font-size: 25px;
     }
     header .codes {
       font-size: 14px;
@@ -39,7 +38,7 @@
     }
     h2 {
       margin-top: 0;
-      color: #333;
+      color: #934444;
     }
     label {
       display: block;
@@ -55,7 +54,7 @@
     button {
       margin-top: 20px;
       padding: 10px 15px;
-      background: #0066cc;
+       background: #cc0000;
       color: #fff;
       border: none;
       cursor: pointer;
@@ -65,23 +64,37 @@
     }
     footer {
       text-align: center;
-      background-color: #004080;
+       background-color: #624c4c;
       color: white;
       padding: 10px;
       margin-top: 30px;
+          }
+        .header-button {
+    background-color: rgba(37, 39, 42, 0.8);
+    border: 1px solid #999;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    white-space: nowrap;
+    transition: background-color 0.3s;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>MMU FindIT</h1>
-     <img src="c:\Users\irfan\MMUFindIT-G75\mmu_logo.png" alt="MMU Logo" style="height:60px; vertical-align:middle; margin-right:15px;">
+    <h1>MMUFindit Lost & Found</h1>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="mmu_logo.png"MMU Logo style="height:60px; vertical-align:middle; margin-right:15px;">
   <h1 style="display:inline-block; vertical-align:middle;"></h1>
-    
+     <p>Report Your Missing Item</p>
+           <a href="MAP.html" class="header-button">Back to Map</a>
   </header>
 
   <div class="container">
-    <h2>Make a Report LOST</h2>
+    <h2> Your Missing item Form</h2>
     <form id="lostForm">
       <label>Item Name</label>
       <input type="text" name="itemName" required>
